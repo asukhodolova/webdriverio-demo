@@ -1,7 +1,7 @@
 import LoginPage from '../pageobjects/login.page.js'
 import SecurePage from '../pageobjects/secure.page.js'
 import log from 'loglevel';
-import {currentTest} from 'javascript-agent-webdriverio';
+import {currentTest} from '@zebrunner/javascript-agent-webdriverio';
 
 describe('My Login application', () => {
 
@@ -9,25 +9,23 @@ describe('My Login application', () => {
 
     before(function () {
         logger.info("before")
-      });
+    });
     
-      after(function () {
+    after(function () {
         logger.info("after")
-      });
-    
-      beforeEach(async function () {
+    });
+  
+    beforeEach(async function () {
         logger.info("beforeEach")
-        await LoginPage.open()
-      });
+    });
     
-      afterEach(function () {
+    afterEach(function () {
         logger.info("afterEach")
-      });
+    });
 
     it('PASS: should login with valid credentials', async () => {
         logger.info('Login with valid credentials...')
 
-        await LoginPage.open()
         await LoginPage.login('tomsmith', 'SuperSecretPassword!')
         currentTest.saveScreenshot(browser)
         currentTest.setMaintainer('asukhodolova')
@@ -39,16 +37,17 @@ describe('My Login application', () => {
             'You logged into a secure area!')
     })
 
-    it('SKIP: inside the test', function ()  {
-        this.skip();
-    })
+    // it('SKIP: inside the test', function ()  {
+    //     this.skip();
+    // })
 
     it('FAIL: with TypeError', async () => {
         throw new TypeError("test error", "test.js", 10)
     })
 
-    it('PASS: empty test', async () => {
-    })
+    it('PASS: empty test', async () => {})
+
+    it.skip('SKIP: from it', async () => {})
 
     it('FAIL: should failed with incorrect text', async () => {
         await LoginPage.open()
@@ -58,8 +57,7 @@ describe('My Login application', () => {
             'You logged into a unsecure area!')
     })
 
-
-    it.skip('SKIP: should failed with invalid credentials', async () => {
+    it('FAIL: should failed with invalid credentials', async () => {
         await LoginPage.open()
         await LoginPage.login('tomsmith', 'qwe!')
         await expect(SecurePage.flashAlert).toBeExisting()

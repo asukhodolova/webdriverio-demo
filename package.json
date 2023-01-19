@@ -11,7 +11,7 @@
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
-    "test": "npm install & npm run wdio"
+    "test": "npm install && npm run wdio"
   },
   "dependencies": {
     "javascript-agent-webdriverio": "^1.0.0"

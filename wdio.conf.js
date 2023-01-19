@@ -1,4 +1,4 @@
-import {ZebrunnerReporter, ZebrunnerService} from 'javascript-agent-webdriverio';
+import {ZebrunnerReporter, ZebrunnerService} from '@zebrunner/javascript-agent-webdriverio';
 
 export const config = {
     //

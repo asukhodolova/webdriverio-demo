@@ -1,4 +1,4 @@
-import {ZebrunnerReporter, ZebrunnerService} from '@zebrunner/javascript-agent-webdriverio';
+import {ZebrunnerReporter, ZebrunnerService} from 'javascript-agent-webdriverio';
 
 export const config = {
     //
@@ -117,7 +117,7 @@ export const config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [[ZebrunnerService], 'chromedriver'],
+    services: [[ZebrunnerService]],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -144,11 +144,45 @@ export const config = {
         ZebrunnerReporter,
         {
             enabled: true,
-            projectKey: 'DEF',
+            projectKey: 'ANNAS',
             server: {
-                hostname: 'https://mycompany.zebrunner.com',
-                accessToken: 'somesecretaccesstoken'
+                hostname: 'https://mycompanyname.com',
+                accessToken: 'accessTokenHere'
             },
+            launch: {
+                displayName: 'Anna WDIO tests',
+                build: '2.41.2.2431-SNAPSHOT',
+                environment: 'QA',
+                locale: 'en_US',
+                //treatSkipsAsFailures: true,
+                labels: {
+                    configuredBy: 'Alice',
+                    reviewer: 'Bob'
+                },
+                artifactReferences: {
+                    website: 'https://zebrunner.com',
+                    github: 'https://github.com/zebrunner'
+                }
+            },
+            milestone: {
+                id: 1,
+            },
+            screenshots: {
+                afterError: true,
+                beforeCommands: [],
+                afterCommands: ['click']
+            },
+            logs: {
+                pushDelayMillis: 10000,
+                includeLoggerName: true,
+                //excludeLoggers: ['zebrunner.api-client', 'webdriver']
+            },
+            // notifications: {
+            //     notifyOnEachFailure: false,
+            //     //slackChannels: 'dev, qa',
+            //     //teamsChannels: 'dev-channel, management',
+            //     emails: 'asukhodolova@solvd.com'
+            // }
         }
     ],'spec'],
 
@@ -242,7 +276,7 @@ export const config = {
     /**
      * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
      * afterEach in Mocha)
-     */
+    //  */
     // afterHook: function (test, context, { error, result, duration, passed, retries }) {
     // },
     /**

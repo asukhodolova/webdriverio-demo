@@ -10,9 +10,10 @@
     "wdio-chromedriver-service": "^8.0.1"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.js",
+    "test": "npm install & npm run wdio"
   },
   "dependencies": {
-    "@zebrunner/javascript-agent-webdriverio": "^1.0.0"
+    "javascript-agent-webdriverio": "^1.0.0"
   }
 }

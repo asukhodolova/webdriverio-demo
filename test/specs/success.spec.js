@@ -22,6 +22,8 @@ describe("SUCCESS: My Login application", () => {
     logger.info("afterEach");
   });
 
+  it("PASS: empty test", async () => {});
+
   it("PASS: should login with valid credentials", async () => {
     logger.info("Login with valid credentials...");
     await LoginPage.open();
@@ -43,10 +45,18 @@ describe("SUCCESS: My Login application", () => {
     console.log(browser.sessionId); // outputs: 9a0d9bf9d4864160aa982c50cf18a573
   });
 
-  it("PASS: empty test", async () => {});
-
   it("PASS: just open", async () => {
     await LoginPage.open();
+  });
+
+  it("PASS: login success after reload a session", async () => {
+    logger.info("Login with valid credentials...");
+    await LoginPage.open();
+    await LoginPage.login("tomsmith", "SuperSecretPassword!");
+    await expect(SecurePage.flashAlert).toBeExisting();
+    await expect(SecurePage.flashAlert).toHaveTextContaining(
+      "You logged into a secure area!"
+    );
   });
 
   it("PASS: another empty test", async () => {});

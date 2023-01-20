@@ -32,7 +32,7 @@ describe("FAIL: My Login application", () => {
     );
   });
 
-  it.skip("FAIL: throw error", async () => {
+  it("FAIL: throw error", async () => {
     throw new TypeError("type error", "test.js", 10);
   });
 });

@@ -15,19 +15,17 @@ export const config = {
   reporterSyncInterval: 60 * 1000,
 
   // Zebrunner Selenium Grid
-  protocol: 'https',
-  hostname: 'engine.zebrunner.com',
-  port: 443,
-  path: '/wd/hub',
-  user: 'test',
-  key: '123qwe',
+  // protocol: 'https',
+  // hostname: 'engine.zebrunner.com',
+  // port: 443,
+  // path: '/wd/hub',
+  // user: 'test',
+  // key: '123qwe',
 
   capabilities: [
       {
           // these capabilities are propagated from Zebrunner Launcher and replace the original ones
-          platformName: 'Linux',
           browserName: 'chrome',
-          browserVersion: '105.0',
           // other original capabilities from the `wdio.conf.js` file...
       },
   ],
@@ -48,7 +46,9 @@ export const config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/**/*.js"],
+  specs: [
+    './test/specs/**/describe.spec.js',
+  ],
   suites: {
     success: ["./test/specs/success.spec.js"],
     fail: ["./test/specs/fail.spec.js"],
@@ -85,7 +85,7 @@ export const config = {
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
-      maxInstances: 5,
+      maxInstances: 1,
       //
       browserName: "chrome",
       acceptInsecureCerts: true,
@@ -142,7 +142,7 @@ export const config = {
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
-  services: [[ZebrunnerService]], //, 'chromedriver'],
+  services: [[ZebrunnerService], 'chromedriver'],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
@@ -169,13 +169,13 @@ export const config = {
       ZebrunnerReporter,
       {
         enabled: true,
-        projectKey: "ANNAS",
+        projectKey: 'ANNAS',
         server: {
-          hostname: "https://mycompany.com",
-          accessToken: "yourAccessTokenHere",
+            hostname: 'https://sanna.zebrunner.dev/',
+            accessToken: 'JHq10kuJrPAjeZjvyXSNVTqWx2hpGjO2jVGGDqfhRitTslmn4P',
         },
         launch: {
-          displayName: "Anna WDIO tests",
+          displayName: "WDIO Launch",
           build: "2.41.2.2431-SNAPSHOT",
           environment: "QA",
           locale: "en_US",
